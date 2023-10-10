@@ -1,0 +1,12 @@
+<div class="fruitContainer" cdkDropList (cdkDropListDropped)="drop($event)">
+  <div class="itemBox1" *ngFor="let item of fruits" cdkDrag>{{ item }}</div>
+
+
+</div>
+
+
+
+
+<div class="storageBox" cdkDropList (cdkDropListDropped)="drop($event)">
+  <div class="itemBox2" *ngFor="let storageBoxItem of storageBox" cdkDrag>{{ storageBoxItem }}</div>
+</div>
