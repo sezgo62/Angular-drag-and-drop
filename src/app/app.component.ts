@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
@@ -9,23 +9,25 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 })
 export class AppComponent {
   title = 'angular-drag-and-drop';
-
   fruits = ['banana', 'apple', 'pear', 'tangerines'];
-
   storageBox = [];
+  myIndex: any;
 
+  constructor(private cdRef: ChangeDetectorRef) {
+  }
 
   /*drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.fruits, event.previousIndex, event.currentIndex);
   }*/
 
+  ngAfterViewChecked() {
+    this.cdRef.detectChanges();
+ }
 
-myIndex: any;
-
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<any>) {
     console.log('step 1 cleared');
 debugger;
-    if (event.previousContainer.data === this.fruits && event.container.data === this.storageBox) {
+    if (event.previousContainer.data === event.container.data) {
       
       // The item was moved from fruits to storageBox
       transferArrayItem(event.previousContainer.data,
