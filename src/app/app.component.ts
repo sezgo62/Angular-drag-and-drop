@@ -50,6 +50,16 @@ debugger;
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     }
   }
+
+  /*drop(event: CdkDragDrop<any>) {
+    console.log('step 1 cleared');
+    debugger;
+    transferArrayItem(event.previousContainer.data,
+                          event.container.data,
+                          event.previousIndex,
+                          event.currentIndex);
+    
+}*/
   
   
 }
